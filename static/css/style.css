@@ -2,6 +2,9 @@
 body {
 	padding-top: 70px; 
 }
+.search-fld{
+	width: 200px;
+}
 .search-fld, .search-btn {
 	display: inline-block;
 	margin: 5px;

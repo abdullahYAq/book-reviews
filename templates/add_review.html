@@ -1,0 +1,32 @@
+{% extends "temple.html" %}
+{% block body %}
+	
+		<h1 style="margin: 15px"> hello <small>{{session.username}}, add your review on {{bookname}}.</small> </h1>
+		<br><br>
+		<form class="form-style-7" action="{{ url_for('books', book = bookname, username = session.username)}}" method="post">
+			<ul>
+				<li>
+				    <label for="title">Title</label>
+				    <input type="text" name="title" maxlength="100">
+				    <span>Enter your title here</span>
+				</li>
+				
+				<li>
+				    <label for="bio">reviews body</label>
+				    <textarea name="bio" onkeyup="adjust_textarea(this)"></textarea>
+				    
+				</li>
+			</ul>
+			<button type="submit"><a>Save The REVIEW</a></button>
+		</form>
+		
+
+		<script type="text/javascript">
+		//auto expand textarea
+			function adjust_textarea(h) {
+			    h.style.height = "20px";
+			    h.style.height = (h.scrollHeight)+"px";
+			}
+		</script>	
+	
+{% endblock %}

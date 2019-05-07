@@ -1,0 +1,41 @@
+{% extends "temple.html" %}
+{% block body %}
+	{% if session.login == True %}
+		<h1 style="margin: 15px"> hello <small>{{session['username']}}</small> </h1>
+	
+		
+		<div>
+			<h1>book name : {{bookname}} </h1>
+			<h1>book auther : {{bookauther}} </h1>
+			<h1>book published date : {{bookdate}}</h1>
+			<h1>book rates : {{rate}}</h1>
+		</div> 
+		<br><br>
+			
+        	<a href="{{ url_for('add_review', bookname = bookname ) }}"><button type="submit">ADD REVIEW</button></a>
+        	<br><br>
+        	{{msg}}
+      	
+      	<br><br>
+      	{% for review in reviews %}
+			<div class="jumbotron">
+  				<div class="container">
+    				<div class="page-header">
+  						<h1>{{review.username}} <small>{{review.body}}</small></h1>
+					</div>
+  				</div>
+			</div>
+			<br>
+		{% endfor %}	
+	{% else %}
+		
+		<div class="jumbotron">
+  			<div class="container">
+   				<div class="page-header">
+					<h1>You must log in to see the book information.</h1>
+				</div>
+  			</div>
+		</div>
+			
+	{% endif %}
+{% endblock %}

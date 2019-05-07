@@ -1,8 +1,23 @@
 {% extends "temple.html" %}
 {% block title %}Home | Abdullah book reviewer{% endblock %}
+{% block style %} <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> {% endblock %}
 {% block body %}
 	<div class="search-block">
-		<input class="search-fld" type="text" name="search"><br>
-		<button class="btn btn-primary search-btn" type="submit">Look It Up</button>
+		<form action="{{ url_for('index') }}"  method="post">
+			
+			<input  class="search-fld" type="text" name="book" placeholder="Please write the book name, auther, or the isbin"><br>
+			<button class="btn btn-primary search-btn" type="submit">Look It Up</button>
+			
+		</form>
 	</div>
+	<br><br>
+
+	{% for book in books %}
+
+		<div class="list-group container">
+	  		<button type="button" class="list-group-item"><a method="post" href=" {{ url_for('books', book = book.title) }}">{{book.title}}</a></button>
+		</div>
+		
+	{% endfor %}
+	<p>{{name}}</p>			
 {% endblock %}
